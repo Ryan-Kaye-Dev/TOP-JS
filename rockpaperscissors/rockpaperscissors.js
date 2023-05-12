@@ -3,7 +3,7 @@ let getComputerChoice = () => {
    return choices[Math.floor(Math.random() * 3)];
 }
 
-let playerChoice = "rock" //prompt("Choose your weapon", "Rock, Paper or Scissors?").toLowerCase();
+let playerChoice = prompt("Choose your weapon", "Rock, Paper or Scissors?").toLowerCase();
 let computerChoice  = getComputerChoice();
 
 let playGame = (playerChoice,computerChoice) => {
