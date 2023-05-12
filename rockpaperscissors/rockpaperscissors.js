@@ -1,27 +1,40 @@
 let getComputerChoice = () => {
-    let choices = ["rock", "paper", "scissors"];
-   return choices[Math.floor(Math.random() * 3)];
+  let choices = ["rock", "paper", "scissors"];
+  return choices[Math.floor(Math.random() * 3)];
+};
+
+let playerChoice = prompt(
+  "Choose your weapon",
+  "Rock, Paper or Scissors?"
+).toLowerCase();
+let computerChoice = "rock";
+
+let playerScore = 0;
+let computerScore = 0;
+
+let playGame = (playerChoice, computerChoice) => {
+  if (playerChoice === computerChoice) {
+    playerScore = playerScore;
+  } else if (
+    (playerChoice === "rock" && computerChoice === "scissors") ||
+    (playerChoice === "paper" && computerChoice === "rock") ||
+    (playerChoice === "scissors" && computerChoice === "paper")
+  ) {
+    playerScore++;
+  } else if (
+    (playerChoice === "rock" && computerChoice === "paper") ||
+    (playerChoice === "paper" && computerChoice === "scissors") ||
+    (playerChoice === "scissors" && computerChoice === "rock")
+  ) {
+    computerScore++;
+  }
 }
 
-let playerChoice = prompt("Choose your weapon", "Rock, Paper or Scissors?").toLowerCase();
-let computerChoice  = getComputerChoice();
-
-let playGame = (playerChoice,computerChoice) => {
-    if ( playerChoice === computerChoice){
-        return console.log("It's a tie!");
-    } else if ( playerChoice === "rock" && computerChoice === "scissors"){
-        return "You win!"
-    } else if ( playerChoice === "rock" && computerChoice === "paper"){
-        return "You lose!"
-    } else if ( playerChoice === "paper" && computerChoice === "scissors"){
-        return "You lose!"
-    } else if ( playerChoice === "paper" && computerChoice === "rock"){
-        return "You win!"
-    } else if ( playerChoice === "scissors" && computerChoice === "rock"){
-        return "You lose!"
-    } else if ( playerChoice === "scissors" && computerChoice === "paper"){
-        return "You win!"
-    } else return "Error"
-}
-
-console.log(computerChoice,playGame(playerChoice,computerChoice));
+let game = () => {
+    playGame();
+    playGame();
+    playGame();
+    playGame();
+    playGame();
+    return console.log(playerScore,computerScore)
+};
