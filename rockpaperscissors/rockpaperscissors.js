@@ -1,55 +1,62 @@
-let playGame = (numberOfGames) => {
-  let playerScore = 0;
-  let computerScore = 0;
+    // set scores
+let playerScore = 0;
+let computerScore = 0;
 
-  for (let i = 0; i < numberOfGames; i++) {
-    let getComputerChoice = () => {
-      let choices = ["rock", "paper", "scissors"];
-      return choices[Math.floor(Math.random() * 3)];
-    };
-    let computerChoice = getComputerChoice();
+let playGame = (playerChoice) => {
+ 
+    // get computer choice randomly
+  let getComputerChoice = () => {
+    let choices = ["rock", "paper", "scissors"];
+    return choices[Math.floor(Math.random() * 3)];
+  };
+  let computerChoice = getComputerChoice();
 
-    let playerChoice = prompt(
-      "Choose your weapon",
-      "Rock, Paper or Scissors?"
-    ).toLowerCase();
+    // possible outcomes
+  if (playerChoice === computerChoice) {
+    document.getElementById("result-box").textContent = "Tie";
+    playerScore = playerScore;
+  } else if (
+    (playerChoice === "rock" && computerChoice === "scissors") ||
+    (playerChoice === "paper" && computerChoice === "rock") ||
+    (playerChoice === "scissors" && computerChoice === "paper")
+  ) {
+    document.getElementById("result-box").textContent = "Win";
+    playerScore++;
+  } else if (
+    (playerChoice === "rock" && computerChoice === "paper") ||
+    (playerChoice === "paper" && computerChoice === "scissors") ||
+    (playerChoice === "scissors" && computerChoice === "rock")
+  ) {
+    document.getElementById("result-box").textContent = "Lose";
+    computerScore++;
+  }
+    updateScores();
 
-    if (playerChoice === computerChoice) {
-      console.log("Tie");
-      playerScore = playerScore;
-    } else if (
-      (playerChoice === "rock" && computerChoice === "scissors") ||
-      (playerChoice === "paper" && computerChoice === "rock") ||
-      (playerChoice === "scissors" && computerChoice === "paper")
-    ) {
-      console.log("Win");
-      playerScore++;
-    } else if (
-      (playerChoice === "rock" && computerChoice === "paper") ||
-      (playerChoice === "paper" && computerChoice === "scissors") ||
-      (playerChoice === "scissors" && computerChoice === "rock")
-    ) {
-      console.log("Lose");
-      computerScore++;
+    // define winner
+    if (playerScore == 5) {
+        document.getElementById("winner").textContent = "You Win!"
+    } else if (computerScore ==5) {
+        document.getElementById("winner").textContent = "You Lose!"
     }
-  }
 
-  if (playerScore > computerScore) {
-    console.log(
-      `The Score was ` + `${playerScore}` + ` : ` + `${computerScore} You won!`
-    );
-  } else if (playerScore < computerScore) {
-    console.log(
-      `The Score was ` + `${playerScore}` + ` : ` + `${computerScore} You lost!`
-    );
-  } else {
-    console.log(
-      `The Score was ` +
-        `${playerScore}` +
-        ` : ` +
-        `${computerScore} So it was a Tie!`
-    );
-  }
+    
 };
+    
+    let rock = document.getElementById('rock');
+    let paper = document.getElementById('paper');
+    let scissors = document.getElementById('scissors');
 
-playGame(5);
+    rock.addEventListener('click', function(){
+        playGame('rock')
+    });
+    paper.addEventListener('click', function(){
+        playGame('paper')
+    });
+    scissors.addEventListener('click', function(){
+        playGame('scissors')
+    });
+
+    let updateScores = () => {
+        document.getElementById("player-score").textContent = `Player Score: ${playerScore}`;
+        document.getElementById("pc-score").textContent = `Computer Score: ${computerScore}`;
+    };
