@@ -32,5 +32,4 @@ let operate = (firstNumber, operator, secondNumber) => {
     } else if (operator === '/') {
         return divide(firstNumber, secondNumber)
     }
-   }
-   console.log(operate(3,'*',13));
+   };
