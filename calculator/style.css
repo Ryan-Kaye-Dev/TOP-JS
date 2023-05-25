@@ -1,3 +1,8 @@
+#calculator {
+    border: solid black 2px;
+    padding: 10px;
+    border-radius: 5px;
+}
 #button-grid {
     margin-top: 10px;
     display: grid;

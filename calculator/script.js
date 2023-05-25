@@ -33,3 +33,21 @@ let operate = (firstNumber, operator, secondNumber) => {
         return divide(firstNumber, secondNumber)
     }
    };
+
+   //define variable for current display
+   let currentDisplay = '';
+   
+   //define buttons
+   let buttons = Array.from(document.getElementsByClassName('button'));
+
+   //add event listener
+   buttons.forEach((button) => {
+    button.addEventListener('click', function(){
+        const clickedButton = this.innerText;
+        currentDisplay += clickedButton
+        document.getElementById('display-current').textContent = currentDisplay
+    })
+   });
+   
+   console.log(buttons);
+   
