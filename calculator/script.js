@@ -38,16 +38,37 @@ let operate = (firstNumber, operator, secondNumber) => {
    let currentDisplay = '';
    
    //define buttons
-   let buttons = Array.from(document.getElementsByClassName('button'));
+   let numButtons = Array.from(document.getElementsByClassName('num-button'));
+   let opButtons = Array.from(document.getElementsByClassName('op-button'));
+   let eqButton = Array.from(document.getElementsByClassName('eq-button'));
 
-   //add event listener
-   buttons.forEach((button) => {
+
+   //add event listener for num buttons
+   numButtons.forEach((button) => {
     button.addEventListener('click', function(){
         const clickedButton = this.innerText;
         currentDisplay += clickedButton
         document.getElementById('display-current').textContent = currentDisplay
     })
    });
-   
-   console.log(buttons);
+
+    //add event listener for operator buttons
+    opButtons.forEach((button) => {
+        button.addEventListener('click', function(){
+            let firstNumber = currentDisplay;
+            currentDisplay = '';
+            const operator = this.innerText;
+            document.getElementById('display-prev').textContent = operator;
+            document.getElementById('display-current').textContent = currentDisplay
+        })
+       });
+    
+       //add event listener for equals buttons
+    eqButton.forEach((button) => {
+        button.addEventListener('click', function(){
+            const clickedButton = this.innerText;
+            currentDisplay += clickedButton
+            document.getElementById('display-current').textContent = currentDisplay
+        })
+       });
    
