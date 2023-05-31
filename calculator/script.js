@@ -1,7 +1,7 @@
 // define numbers and operator
 let firstNumber = 0;
 let secondNumber = 0;
-let operator = '';
+let operator = "";
 //define variable for current display
 let currentDisplay = "";
 let secondDisplay = "";
@@ -29,7 +29,7 @@ let operate = (firstNumber, operator, secondNumber) => {
     return add(firstNumber, secondNumber);
   } else if (operator === "-") {
     return substract(firstNumber, secondNumber);
-  } else if (operator === "x") {
+  } else if (operator === "*") {
     return multiply(firstNumber, secondNumber);
   } else if (operator === "÷") {
     return divide(firstNumber, secondNumber);
@@ -46,11 +46,11 @@ let delButton = Array.from(document.getElementsByClassName("del-button"));
 //define updateDisplays
 let updateDisplay = (text) => {
   document.getElementById("display-current").textContent = text;
-}
+};
 
 let updateDisplay2 = (text) => {
   document.getElementById("display-prev").textContent = text;
-}
+};
 
 //add event listener for num buttons
 numButtons.forEach((button) => {
@@ -75,7 +75,7 @@ opButtons.forEach((button) => {
         updateDisplay(firstNumber);
       }
       operator = this.innerText;
-      updateDisplay2(operator)
+      updateDisplay2(operator);
       currentDisplay = "";
     }
   });
@@ -83,35 +83,35 @@ opButtons.forEach((button) => {
 
 //add event listener for equals button
 eqButton.forEach((button) => {
-  button.addEventListener("click", function() {
+  button.addEventListener("click", function () {
     secondNumber = parseFloat(currentDisplay);
     let answer = operate(firstNumber, operator, secondNumber);
-    currentDisplay = ''
+    currentDisplay = "";
     secondNumber = 0;
     firstNumber = 0;
     updateDisplay(answer);
-    updateDisplay2('');
-  })
-})
+    updateDisplay2("");
+  });
+});
 
 //add event listener for clr button
 clrButton.forEach((button) => {
-    button.addEventListener("click", function () {
-        currentDisplay = '';
-        updateDisplay('');
-        operator = '';
-        updateDisplay2('');
-    });
+  button.addEventListener("click", function () {
+    currentDisplay = "";
+    updateDisplay("");
+    operator = "";
+    updateDisplay2("");
   });
+});
 
-  //add event listener for del button
+//add event listener for del button
 delButton.forEach((button) => {
-    button.addEventListener("click", function () {
-        currentDisplay = '';
-        updateDisplay('');
-        operator = '';
-        updateDisplay2('');
-        firstNumber = 0;
-        secondNumber = 0;
-    });
+  button.addEventListener("click", function () {
+    currentDisplay = "";
+    updateDisplay("");
+    operator = "";
+    updateDisplay2("");
+    firstNumber = 0;
+    secondNumber = 0;
   });
+});
