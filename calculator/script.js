@@ -2,7 +2,6 @@
 let firstNumber = 0;
 let secondNumber = 0;
 let operator = '';
-let op = false;
 //define variable for current display
 let currentDisplay = "";
 let secondDisplay = "";
@@ -30,7 +29,7 @@ let operate = (firstNumber, operator, secondNumber) => {
     return add(firstNumber, secondNumber);
   } else if (operator === "-") {
     return substract(firstNumber, secondNumber);
-  } else if (operator === "*") {
+  } else if (operator === "x") {
     return multiply(firstNumber, secondNumber);
   } else if (operator === "÷") {
     return divide(firstNumber, secondNumber);
@@ -87,7 +86,11 @@ eqButton.forEach((button) => {
   button.addEventListener("click", function() {
     secondNumber = parseFloat(currentDisplay);
     let answer = operate(firstNumber, operator, secondNumber);
+    currentDisplay = ''
+    secondNumber = 0;
+    firstNumber = 0;
     updateDisplay(answer);
+    updateDisplay2('');
   })
 })
 
@@ -95,7 +98,9 @@ eqButton.forEach((button) => {
 clrButton.forEach((button) => {
     button.addEventListener("click", function () {
         currentDisplay = '';
-        document.getElementById("display-current").textContent = '';
+        updateDisplay('');
+        operator = '';
+        updateDisplay2('');
     });
   });
 
@@ -103,11 +108,10 @@ clrButton.forEach((button) => {
 delButton.forEach((button) => {
     button.addEventListener("click", function () {
         currentDisplay = '';
-        document.getElementById("display-current").textContent = '';
-        document.getElementById("display-prev").textContent = 'DEL';
+        updateDisplay('');
+        operator = '';
+        updateDisplay2('');
+        firstNumber = 0;
+        secondNumber = 0;
     });
-    firstNumber = 0;
-    secondNumber = 0;
-    operator = '';
-    currentDisplay = '';
   });
